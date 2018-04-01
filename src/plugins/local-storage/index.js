@@ -1,6 +1,6 @@
 import PetstoreYaml from "./petstore"
 import CryptoJS from 'crypto-js'
-import fetch from 'node-fetch';
+import "whatwg-fetch"
 
 const CONTENT_KEY = "swagger-editor-content"
 
@@ -17,7 +17,7 @@ function getQueryString(name)
     var url = window.location.search
     var reg = new RegExp('(^|&)'+ name +'=([^&]*)(&|$)','i')
     var r = url.substr(1).match(reg)
-    if (r != null) return decodeURI(r[2]); return null
+    if (r != null) return decodeURIComponent(r[2]); return null
 }
 
 // function base64_encode(data){
@@ -45,7 +45,7 @@ function loadByQueryYamlUrl() {
 export default function(system) {
   // setTimeout runs on the next tick
   setTimeout(() => {
-    loadByQueryYamlUrl()
+    //loadByQueryYamlUrl()
     if(localStorage.getItem(CONTENT_KEY)) {
       system.specActions.updateSpec(localStorage.getItem(CONTENT_KEY))
     } else if(localStorage.getItem("ngStorage-SwaggerEditorCache")) {

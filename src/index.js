@@ -22,7 +22,7 @@ function getQueryString(name)
     var url = window.location.search
     var reg = new RegExp('(^|&)'+ name +'=([^&]*)(&|$)','i')
     var r = url.substr(1).match(reg)
-    if (r != null) return decodeURI(r[2]); return null
+    if (r != null) return decodeURIComponent(r[2]); return null
 }
 
 function base64_decode(dataBase64){
